@@ -7,9 +7,10 @@ import (
 )
 
 type Config struct {
-	CAFile   string
-	CertFile string
-	KeyFile  string
+	CAFile     string
+	CertFile   string
+	KeyFile    string
+	ServerName string
 }
 
 func (c Config) ClientConfig() (*tls.Config, error) {
@@ -21,6 +22,7 @@ func (c Config) ClientConfig() (*tls.Config, error) {
 		CertFile:      c.CertFile,
 		KeyFile:       c.KeyFile,
 		TrustedCAFile: c.CAFile,
+		ServerName:    c.ServerName,
 	}
 	tlsConfig, err := info.ClientConfig()
 	if err != nil {
