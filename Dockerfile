@@ -4,6 +4,6 @@ WORKDIR /go/src/github.com/rancher/kine
 COPY . .
 RUN GO111MODULE=on go build -o /bin/kine
 
-FROM alpine:3.11
+FROM alpine:3.22.1
 COPY --from=builder /bin/kine /bin/kine
 ENTRYPOINT ["/bin/kine"]
